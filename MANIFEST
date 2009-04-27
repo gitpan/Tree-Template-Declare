@@ -1,0 +1,26 @@
+inc/Module/Install.pm
+inc/Module/Install/Base.pm
+inc/Module/Install/Can.pm
+inc/Module/Install/Fetch.pm
+inc/Module/Install/Makefile.pm
+inc/Module/Install/Metadata.pm
+inc/Module/Install/Win32.pm
+inc/Module/Install/WriteAll.pm
+lib/Tree/Template/Declare.pm
+lib/Tree/Template/Declare/DAG_Node.pm
+lib/Tree/Template/Declare/HTML_Element.pm
+lib/Tree/Template/Declare/LibXML.pm
+Makefile.PL
+MANIFEST			This list of files
+META.yml
+t/00-author-critic.t
+t/00-author-minver.t
+t/00-author-pod.t
+t/01-basic.t
+t/02-xslt.t
+t/03-html.t
+t/04-xml.t
+t/05-mixed.t
+t/06-code.t
+t/perlcriticrc
+TODO
