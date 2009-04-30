@@ -5,9 +5,9 @@ use Sub::Exporter;
 use Devel::Caller 'caller_args';
 use Carp;
 use Data::Dumper;
-use v5.8;
+use 5.006;
 
-our $VERSION='0.1';
+our $VERSION='0.2';
 
 {
 my $exporter=Sub::Exporter::build_exporter({
@@ -33,7 +33,7 @@ sub _build_group {
 
     if (! ref $builder) {
         my $builder_pkg=$builder;
-        if ($builder_pkg=~m{\A \+(\w+) \z}smx) {
+        if ($builder_pkg=~m{\A [+](\w+) \z}smx) {
             $builder_pkg="Tree::Template::Declare::$1";
         }
         eval "require $builder_pkg" ## no critic (ProhibitStringyEval)

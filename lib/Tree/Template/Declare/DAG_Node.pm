@@ -3,7 +3,7 @@ use strict;
 use warnings;
 use Carp;
 
-our $VERSION='0.1';
+our $VERSION='0.2';
 
 sub new {
     my ($class,$node_class)=@_;

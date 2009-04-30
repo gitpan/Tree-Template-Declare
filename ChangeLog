@@ -1,0 +1,8 @@
+.. -*- mode: rst; coding: utf-8 -*-
+
+0.2 2009-04-30
+  - fixed Perl::Critic tests
+  - fixed perl version requirement
+
+0.1 2009-04-27
+  - initial version
