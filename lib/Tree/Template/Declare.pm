@@ -7,7 +7,7 @@ use Carp;
 use Data::Dumper;
 use 5.006;
 
-our $VERSION='0.2';
+our $VERSION='0.3';
 
 {
 my $exporter=Sub::Exporter::build_exporter({
@@ -25,6 +25,8 @@ sub import {
     goto $exporter;
 }
 }
+
+our @nodes_stack;
 
 sub _build_group {
     my ($class,$name,$args,$coll)=@_;
@@ -47,50 +49,50 @@ sub _build_group {
         }
     }
 
-    my @current_node=(undef);
-
     my $normal_exports= {
         tree => sub(&) {
             my $tree=$builder->new_tree();
-            {
-                local $current_node[0]=$tree;
-                $_[0]->(caller_args(1));
-            }
+
+            unshift @nodes_stack,$tree;
+            $_[0]->(caller_args(1));
+            shift @nodes_stack;
+
             return $builder->finalize_tree($tree);
         },
         node => sub (&) {
             my $node=$builder->new_node();
-            {
-                local $current_node[0]=$node;
-                $_[0]->(caller_args(1));
-            }
+
+            unshift @nodes_stack, $node;
+            $_[0]->(caller_args(1));
+            shift @nodes_stack;
+
             my $scalar_context=defined wantarray && !wantarray;
-            if ($current_node[0] && !$scalar_context) {
-                $builder->add_child_node($current_node[0],$node);
+            if (@nodes_stack && !$scalar_context) {
+                $builder->add_child_node($nodes_stack[0],$node);
             }
             return $node;
         },
         attach_nodes => sub {
-            if ($current_node[0]) {
+            if (@nodes_stack) {
                 for my $newnode (@_) {
-                    $builder->add_child_node($current_node[0],
+                    $builder->add_child_node($nodes_stack[0],
                                              $newnode);
                 }
             }
         },
         name => sub ($) {
-            $builder->set_node_name($current_node[0],$_[0]);
+            $builder->set_node_name($nodes_stack[0],$_[0]);
             return;
         },
         attribs => sub {
             my %attrs=@_;
-            $builder->set_node_attributes($current_node[0],\%attrs);
+            $builder->set_node_attributes($nodes_stack[0],\%attrs);
             return;
         },
         detached => sub($) { return scalar $_[0] },
     };
     if ($builder->can('_munge_exports')) {
-        return $builder->_munge_exports($normal_exports,\@current_node);
+        return $builder->_munge_exports($normal_exports,\@nodes_stack);
     }
     else {
         return $normal_exports;

@@ -4,7 +4,7 @@ use warnings;
 use Carp;
 use XML::LibXML;
 
-our $VERSION='0.2';
+our $VERSION='0.3';
 
 sub new {
     my ($class)=@_;

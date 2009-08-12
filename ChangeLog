@@ -1,5 +1,10 @@
 .. -*- mode: rst; coding: utf-8 -*-
 
+0.3 2009-06-27
+  - now the "current node" is global, so that you can call
+    node-generating subs in other packages, and actually get the
+    result (see 07-inherit.t)
+
 0.2 2009-04-30
   - fixed Perl::Critic tests
   - fixed perl version requirement
