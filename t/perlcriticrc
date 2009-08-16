@@ -112,7 +112,6 @@ only = 1
 [ValuesAndExpressions::RequireUpperCaseHeredocTerminator]
 [Variables::ProhibitConditionalDeclarations]
 [Variables::ProhibitMatchVars]
-[Variables::ProhibitPackageVars]
 [Variables::ProhibitPerl4PackageNames]
 [Variables::ProhibitPunctuationVars]
 [Variables::ProhibitReusedNames]
