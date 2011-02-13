@@ -1,5 +1,9 @@
 .. -*- mode: rst; coding: utf-8 -*-
 
+0.4 2011-02-13
+  - fixed test for HTML::Element
+  - silenced some critic violations
+
 0.3 2009-06-27
   - now the "current node" is global, so that you can call
     node-generating subs in other packages, and actually get the

@@ -32,7 +32,7 @@ my $tree=tree {
     };
 };
 
-is($tree->as_HTML(),
-   qq{<html><head><title>Page title</title></head><body><p class="para" id="p1">Page para</body></html>\n},
+like($tree->as_HTML(),
+   qr{\A<html><head><title>Page title</title></head><body><p class="para" id="p1">Page para</body></html>\s*\z},
    'HTML tree'
 );

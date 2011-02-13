@@ -28,7 +28,7 @@ foreach my $MODULE ( @MODULES ) {
 		: plan( skip_all => "$MODULE not available for testing" );
 	}
 }
-my $rcfile = File::Spec->catfile( 't', 'perlcriticrc' );
+my $rcfile = File::Spec->catfile( 'xt', 'perlcriticrc' );
 Test::Perl::Critic->import( -profile => $rcfile );
 all_critic_ok();
 

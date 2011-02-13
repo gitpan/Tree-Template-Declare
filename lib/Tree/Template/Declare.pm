@@ -7,7 +7,7 @@ use Carp;
 use Data::Dumper;
 use 5.006;
 
-our $VERSION='0.3';
+our $VERSION='0.4';
 
 {
 my $exporter=Sub::Exporter::build_exporter({
@@ -39,7 +39,7 @@ sub _build_group {
             $builder_pkg="Tree::Template::Declare::$1";
         }
         eval "require $builder_pkg" ## no critic (ProhibitStringyEval)
-            or croak "Can't load $builder_pkg: $@";
+            or croak "Can't load $builder_pkg: $@"; ## no critic (ProhibitPunctuationVars)
 
         if ($builder_pkg->can('new')) {
             $builder=$builder_pkg->new();

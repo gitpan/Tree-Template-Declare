@@ -11,7 +11,6 @@ requires 'Carp'              => 0,
 ;
 
 test_requires 'Test::Most'   => 0,
-              'Tree::DAG_Node::XPath' => '0.10',
 ;
 
 WriteAll;

@@ -14,9 +14,6 @@ lib/Tree/Template/Declare/LibXML.pm
 Makefile.PL
 MANIFEST			This list of files
 META.yml
-t/00-author-critic.t
-t/00-author-minver.t
-t/00-author-pod.t
 t/01-basic.t
 t/02-xslt.t
 t/03-html.t
@@ -24,5 +21,8 @@ t/04-xml.t
 t/05-mixed.t
 t/06-code.t
 t/07-inherit.t
-t/perlcriticrc
 TODO
+xt/00-author-critic.t
+xt/00-author-minver.t
+xt/00-author-pod.t
+xt/perlcriticrc

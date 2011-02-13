@@ -3,14 +3,14 @@ use strict;
 use warnings;
 use Carp;
 
-our $VERSION='0.3';
+our $VERSION='0.4';
 
 sub new {
     my ($class,$node_class)=@_;
     $node_class||='Tree::DAG_Node';
 
     eval "require $node_class" or ## no critic (ProhibitStringyEval)
-        croak "Can't load $node_class: $@";
+        croak "Can't load $node_class: $@"; ## no critic (ProhibitPunctuationVars)
 
     return bless {nc=>$node_class},$class;
 }
