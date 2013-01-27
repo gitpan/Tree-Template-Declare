@@ -4,7 +4,7 @@ use warnings;
 use Carp;
 use HTML::Element;
 
-our $VERSION='0.4';
+our $VERSION='0.5';
 
 sub new {
     my ($class)=@_;

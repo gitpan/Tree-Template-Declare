@@ -36,8 +36,8 @@ sub make_tree {
 {
 my $tree=make_tree();
 
-is($tree->serialize(0),
-   qq{<?xml version="1.0"?>\n<stuff><test:elem1 xmlns:test="http://test/" test:buh="testing" id="1"><test:sub1>some content</test:sub1></test:elem1><elem2 id="2"/></stuff>\n},
+is($tree->toStringC14N(0),
+   qq{<stuff><test:elem1 xmlns:test="http://test/" id="1" test:buh="testing"><test:sub1>some content</test:sub1></test:elem1><elem2 id="2"></elem2></stuff>},
    'XML document without default NS'
 );
 }
@@ -47,8 +47,8 @@ xmlns ':default' => 'ftp://test/';
 {
 my $tree=make_tree();
 
-is($tree->serialize(0),
-   qq{<?xml version="1.0"?>\n<stuff xmlns="ftp://test/"><test:elem1 xmlns:test="http://test/" test:buh="testing" id="1"><test:sub1>some content</test:sub1></test:elem1><elem2 id="2"/></stuff>\n},
+is($tree->toStringC14N(0),
+   qq{<stuff xmlns="ftp://test/"><test:elem1 xmlns:test="http://test/" id="1" test:buh="testing"><test:sub1>some content</test:sub1></test:elem1><elem2 id="2"></elem2></stuff>},
    'XML document with default NS'
 );
 }

@@ -7,7 +7,7 @@ use Carp;
 use Data::Dumper;
 use 5.006;
 
-our $VERSION='0.4';
+our $VERSION='0.5';
 
 {
 my $exporter=Sub::Exporter::build_exporter({

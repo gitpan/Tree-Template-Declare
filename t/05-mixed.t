@@ -31,8 +31,8 @@ my $xmltree= xtree {
     };
 };
 
-is($xmltree->serialize(0),
-   qq{<?xml version="1.0"?>\n<stuff><test:elem1 xmlns:test="http://test/" test:buh="testing" id="1"><test:sub1/></test:elem1><elem2 id="2"/></stuff>\n},
+is($xmltree->toStringC14N(0),
+   qq{<stuff><test:elem1 xmlns:test="http://test/" id="1" test:buh="testing"><test:sub1></test:sub1></test:elem1><elem2 id="2"></elem2></stuff>},
    'XML document'
 );
 

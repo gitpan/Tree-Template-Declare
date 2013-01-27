@@ -32,7 +32,16 @@ my $tree=tree {
     };
 };
 
-like($tree->as_HTML(),
-   qr{\A<html><head><title>Page title</title></head><body><p class="para" id="p1">Page para</body></html>\s*\z},
+my $expected_tree = HTML::Element->new_from_lol(
+    ['html',
+     ['head',
+      ['title','Page title'],
+     ],
+     ['body',
+      ['p','Page para',{class=>'para',id=>'p1'}],
+     ],
+    ],
+);
+ok($tree->same_as($expected_tree),
    'HTML tree'
 );

@@ -1,5 +1,8 @@
 .. -*- mode: rst; coding: utf-8 -*-
 
+0.5 2013-01-27
+  - fixed tests broken by better hash randomisation in perl 5.18
+
 0.4 2011-02-13
   - fixed test for HTML::Element
   - silenced some critic violations
